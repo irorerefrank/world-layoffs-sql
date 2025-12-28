@@ -1,65 +1,51 @@
-# World Layoffs Data Cleaning Project (SQL)
+# Data Cleaning – World Layoffs Dataset (SQL / MySQL)
 
-## Project Overview
 This project focuses on cleaning and preparing the World Layoffs dataset using SQL in MySQL Workbench.
 
-The raw dataset contained duplicate records, inconsistent formatting, missing values, and unnecessary fields.  
-The goal of this project was to transform the data into a clean, reliable, and analysis-ready table that could be used for further exploratory analysis or reporting.
+Before doing any analysis, the dataset needed to be cleaned. The raw data contained duplicate records, inconsistent text values, missing data, and columns that were not useful for analysis. The goal of this project was to create a clean, reliable table that could be safely used for exploratory analysis.
+
+All work was done on a staging table so the original data remained unchanged.
 
 ---
 
 ## Dataset
 - **Name:** World Layoffs Dataset  
-- **Description:** Global company layoff records including company name, industry, location, total employees laid off, percentage laid off, and layoff dates.
+- **Description:** Global company layoff records including company name, industry, country, total layoffs, percentage laid off, funding stage, funds raised, and dates.
 
 ---
 
-## Tools Used
-- **SQL (MySQL)**
-- **MySQL Workbench**
+## What I Did
+The main data cleaning steps included:
+
+- Created a **staging table** to preserve the raw dataset
+- Identified and removed **duplicate records** using `ROW_NUMBER()` and a CTE
+- Standardized text fields such as company names and industries
+- Handled **NULL and blank values**
+- Removed rows and columns that were not useful for analysis
+- Performed validation checks after each major step
 
 ---
 
-## Data Cleaning Process
-The following steps were performed during the data cleaning process:
-
-1. **Created a staging table**  
-   - A staging table was created to preserve the original raw dataset and safely perform transformations.
-
-2. **Removed duplicate records**  
-   - Used `ROW_NUMBER()` with `PARTITION BY` inside a CTE to identify and remove duplicate rows.
-
-3. **Standardized data values**  
-   - Cleaned company names and industry fields to ensure consistent formatting.
-   - Standardized date formats for proper time-based analysis.
-
-4. **Handled NULL and blank values**  
-   - Identified missing and blank values.
-   - Updated or removed records where necessary to maintain data integrity.
-
-5. **Removed unnecessary columns and rows**  
-   - Eliminated columns and records that were not useful for analysis.
+## Files
+- `layoffs_data_cleaning.sql` – contains all SQL queries used to clean and prepare the dataset
 
 ---
 
-## Files in This Repository
-- **`layoffs_data_cleaning.sql`**  
-  Contains all SQL queries used for data cleaning, including staging table creation, duplicate removal, standardization, and null handling.
+## How to Run
+1. Load the raw layoffs dataset into MySQL.
+2. Open MySQL Workbench.
+3. Run the queries in `layoffs_data_cleaning.sql` in order.
+4. The final cleaned table can then be used for analysis or visualization.
 
 ---
 
-## Key Skills Demonstrated
-- SQL data cleaning and transformation
-- Common Table Expressions (CTEs)
-- Window functions
-- Data quality checks
-- Analytical problem-solving
-- Writing clean, readable SQL
+## Why This Step Matters
+Clean data is critical for accurate analysis.  
+This project ensures that the layoffs dataset is consistent, free of duplicates, and structured correctly before performing any exploratory or analytical work.
 
 ---
 
 ## Next Steps
-The cleaned dataset can be used for:
-- Exploratory Data Analysis (EDA)
-- Trend analysis of global layoffs
-- Visualization and dashboard creation using tools like Tableau or Power BI
+The cleaned dataset was later used for:
+- Exploratory Data Analysis (EDA) in SQL
+- Identifying trends by country, industry, company, and time
